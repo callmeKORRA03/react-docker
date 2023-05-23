@@ -2,7 +2,7 @@ name: Deploy React to AWS
 on:
   push:
     branches:
-      - master
+      - "main"
 
 jobs:
   deploy:
@@ -17,8 +17,8 @@ jobs:
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
-          aws_access_key: AKIA26S3CBF6R2IPYPA5
-          aws_secret_key: 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
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: react-docker
           environment_name: React-docker-env
           version_label: ${{ github.sha }}
